@@ -2,8 +2,8 @@ from queue import Queue
 import threading
 from time import sleep
 
-from utils import Singleton
-from services.executables.server import Server
+from aim.web.utils import Singleton
+from aim.web.services.executables.server import Server
 
 
 class Executables(metaclass=Singleton):

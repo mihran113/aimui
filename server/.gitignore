@@ -125,3 +125,6 @@ dmypy.json
 package-lock.json
 
 .idea
+
+.aim
+html

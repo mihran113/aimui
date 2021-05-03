@@ -1,5 +1,5 @@
-from artifacts.proto.base_pb2 import BaseRecord
-from artifacts.proto.metric_pb2 import MetricRecord
+from aim.web.artifacts.proto.base_pb2 import BaseRecord
+from aim.web.artifacts.proto.metric_pb2 import MetricRecord
 
 
 class Artifact(object):

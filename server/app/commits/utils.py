@@ -1,11 +1,12 @@
+import json
 from typing import Optional
 from aim.ql.grammar import Expression
 from aim.ql.utils import match
 
-from app.db import db
-from app.commits.models import TFSummaryLog
-from adapters.tf_summary_adapter import TFSummaryAdapter
-from app.utils import normalize_type
+from aim.web.app.db import db
+from aim.web.app.commits.models import TFSummaryLog
+from aim.web.adapters.tf_summary_adapter import TFSummaryAdapter
+from aim.web.app.utils import normalize_type
 
 
 def select_tf_summary_scalars(tags, expression: Optional[Expression] = None):
@@ -15,7 +16,7 @@ def select_tf_summary_scalars(tags, expression: Optional[Expression] = None):
     params = {}
     scalars_models = db.session.query(TFSummaryLog).all()
     for scalar in scalars_models:
-        scalar_params = scalar.params_json
+        scalar_params = json.loads(scalar.params)
         for k, v in scalar_params.items():
             scalar_params[k] = normalize_type(v)
         params[scalar.log_path] = scalar_params

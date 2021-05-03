@@ -1,7 +1,7 @@
 from flask_script import Manager
 from flask_migrate import MigrateCommand
 
-from app import App
+from aim.web.app import App
 
 # Set up the app
 app = App()

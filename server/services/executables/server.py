@@ -1,7 +1,7 @@
 import socket
 from time import sleep
 
-from utils import Singleton
+from aim.web.utils import Singleton
 
 
 class Server(metaclass=Singleton):

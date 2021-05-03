@@ -1,5 +1,5 @@
-from services.executables.action import Action
-from app import App
+from aim.web.services.executables.action import Action
+from aim.web.app import App
 
 
 def execute_process(name, script_path, arguments=None, env_vars=None,

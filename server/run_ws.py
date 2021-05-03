@@ -1,5 +1,5 @@
-import services.ws as ws
-from services.watcher.file_watcher import FileWatcher
+import aim.web.services.ws as ws
+from aim.web.services.watcher.file_watcher import FileWatcher
 
 
 if __name__ == '__main__':

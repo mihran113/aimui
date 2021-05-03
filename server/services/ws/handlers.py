@@ -4,8 +4,8 @@ from threading import Thread, Lock
 from tornado import websocket, escape
 import base64
 
-from services.watcher.file import File
-from services.watcher.file_watcher import FileWatcher
+from aim.web.services.watcher.file import File
+from aim.web.services.watcher.file_watcher import FileWatcher
 
 
 class InsightSocketHandler(websocket.WebSocketHandler):

@@ -1,7 +1,7 @@
 import os
 from tornado import web, ioloop, autoreload
 
-from services.ws.handlers import *
+from aim.web.services.ws.handlers import *
 
 
 class Application(web.Application):

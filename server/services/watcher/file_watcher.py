@@ -1,7 +1,7 @@
 import time
 from threading import Thread
 
-from utils import Singleton
+from aim.web.utils import Singleton
 
 
 class FileWatcher(metaclass=Singleton):

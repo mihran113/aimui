@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-from utils import Singleton
+from aim.web.utils import Singleton
 
 db = None
 

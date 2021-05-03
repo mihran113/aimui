@@ -17,18 +17,18 @@ from flask import (
 from flask_restful import Api, Resource
 from sqlalchemy import func
 
-from app.db import db
-from app.utils import unsupported_float_type
-from app.projects.utils import (
+from aim.web.app.db import db
+from aim.web.app.utils import unsupported_float_type
+from aim.web.app.projects.utils import (
     read_artifact_log,
     get_branch_commits,
     deep_merge,
     dump_dict_values,
     upgrade_runs_table,
 )
-from app.projects.project import Project
-from app.commits.models import Commit
-from artifacts.artifact import Metric as MetricRecord
+from aim.web.app.projects.project import Project
+from aim.web.app.commits.models import Commit
+from aim.web.artifacts.artifact import Metric as MetricRecord
 
 
 projects_bp = Blueprint('projects', __name__)
@@ -151,7 +151,7 @@ class ProjectParamsApi(Resource):
 @projects_api.resource('/<exp_name>/<commit>/models/<model_name>')
 class ExperimentModelApi(Resource):
     def get(self, exp_name, commit, model_name):
-        dir_path = os.path.join('/store', exp_name, commit)
+        dir_path = os.path.join(os.getcwd(), '.aim', exp_name, commit)
         objects_dir_path = os.path.join(dir_path, 'objects')
         models_dir_path = os.path.join(objects_dir_path, 'models')
 
@@ -167,7 +167,7 @@ class ProjectExperimentApi(Resource):
         if not project.exists():
             return make_response(jsonify({}), 404)
 
-        dir_path = os.path.join('/store', experiment_name)
+        dir_path = os.path.join(os.getcwd(), '.aim', experiment_name)
 
         # Check if experiment exists
         if not os.path.isdir(dir_path):
@@ -340,7 +340,8 @@ class ProjectExperimentFileApi(Resource):
         if not project.exists():
             return make_response(jsonify({}), 404)
 
-        objects_dir_path = os.path.join('/store',
+        objects_dir_path = os.path.join(os.getcwd(),
+                                        '.aim',
                                         experiment_name,
                                         commit_id,
                                         'objects')

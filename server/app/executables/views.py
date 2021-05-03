@@ -10,11 +10,11 @@ from flask import (
 )
 from flask_restful import Api, Resource
 
-from app import App
-from services.executables.action import Action
-from app.executables.models import Executable, Process
-from app.db import db
-from app.executables.utils import execute_process, clear_form
+from aim.web.app import App
+from aim.web.services.executables.action import Action
+from aim.web.app.executables.models import Executable, Process
+from aim.web.app.db import db
+from aim.web.app.executables.utils import execute_process, clear_form
 
 
 executables_bp = Blueprint('executables', __name__)

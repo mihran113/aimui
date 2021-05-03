@@ -9,9 +9,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import insert
 
 from file_read_backwards import FileReadBackwards
-from app.db import db
-from app.commits.models import Commit
-from app.config import config
+from aim.web.app.db import db
+from aim.web.app.commits.models import Commit
+from aim.web.app.config import config
 
 
 def upgrade_runs_table(project, modified_runs):

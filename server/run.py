@@ -1,7 +1,4 @@
-from app import App
+from aim.web.app import App
 
 
-app = App().api
-
-if __name__ == '__main__':
-    app.run()
+application = App().api

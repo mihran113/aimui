@@ -5,13 +5,13 @@ import json
 from aim.engine.repo import AimRepo
 from aim.engine.configs import AIM_COMMIT_CONFIG_FILE_NAME
 
-from app.commits.utils import TFSummaryAdapter
+from aim.web.app.commits.utils import TFSummaryAdapter
 
 
 class Project:
     DEFAULT_PROJECT_NAME = 'Project'
     DEFAULT_PROJECT_PATH = '/project'
-    REPO_PATH = '/store'
+    REPO_PATH = '.aim'
 
     def __init__(self):
         self.name = os.getenv('PROJECT_NAME') or self.DEFAULT_PROJECT_NAME

@@ -9,8 +9,8 @@ from flask import (
 from flask_restful import Api, Resource
 from sqlalchemy.orm import joinedload
 
-from app.db import db
-from app.commits.models import Tag
+from aim.web.app.db import db
+from aim.web.app.commits.models import Tag
 
 
 tags_bp = Blueprint('tags', __name__)

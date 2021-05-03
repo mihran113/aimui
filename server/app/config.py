@@ -14,7 +14,7 @@ class DevelopmentConfig(Config):
     Development Configuration - default config
     """
     SQLALCHEMY_ECHO = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://aim_user:iu2g6udb982uyvUYGdwh093hioq0@0.0.0.0:5432/aim_db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/.aim/aim_db'.format(os.getcwd())
     DEBUG = True
 
 
@@ -22,7 +22,8 @@ class ProductionConfig(Config):
     """
     Production Configuration
     """
-    SQLALCHEMY_DATABASE_URI = 'postgresql://aim_user:iu2g6udb982uyvUYGdwh093hioq0@0.0.0.0:5432/aim_db'
+    SQLALCHEMY_ECHO = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/.aim/aim_db'.format(os.getcwd())
     DEBUG = False
 
 

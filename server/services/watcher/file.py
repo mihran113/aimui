@@ -3,7 +3,7 @@ from abc import ABCMeta
 
 from aimrecords import Storage
 
-from artifacts.artifact import Metric
+from aim.web.artifacts.artifact import Metric
 
 
 class AbstractTracker(object, metaclass=ABCMeta):
@@ -49,7 +49,7 @@ class JsonLogTracker(AbstractTracker):
     def get_path(self, branch, file_path):
         if not file_path or not branch:
             return None
-        return os.path.join('/store', branch, 'index', 'objects', file_path)
+        return os.path.join(os.getcwd(), '.aim', branch, 'index', 'objects', file_path)
 
     def inc_cursor(self):
         return False
@@ -60,7 +60,7 @@ class AimRecordsTracker(AbstractTracker):
 
     def __init__(self, branch, name):
         if AimRecordsTracker.storage is None:
-            storage_path = os.path.join('/store', branch, 'index', 'objects')
+            storage_path = os.path.join(os.getcwd(), '.aim', branch, 'index', 'objects')
             AimRecordsTracker.storage = Storage(storage_path, 'r')
         self.name = name
 

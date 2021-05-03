@@ -1,7 +1,7 @@
 import uuid
 
-from app.db import db
-from app.utils import default_created_at
+from aim.web.app.db import db
+from aim.web.app.utils import default_created_at
 
 
 class Executable(db.Model):

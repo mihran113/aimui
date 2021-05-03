@@ -9,15 +9,15 @@ from flask_restful import Api, Resource
 from pyrser.error import Diagnostic, Severity, Notification
 from aim.ql.grammar.statement import Statement, Expression
 
-from app import App
-from app.projects.project import Project
-from app.commits.models import Commit, TFSummaryLog, Tag
-from services.executables.action import Action
-from app.db import db
-from adapters.tf_summary_adapter import TFSummaryAdapter
-from artifacts.artifact import Metric as MetricRecord
-from app.utils import unsupported_float_type
-from app.commits.utils import (
+from aim.web.app import App
+from aim.web.app.projects.project import Project
+from aim.web.app.commits.models import Commit, TFSummaryLog, Tag
+from aim.web.services.executables.action import Action
+from aim.web.app.db import db
+from aim.web.adapters.tf_summary_adapter import TFSummaryAdapter
+from aim.web.artifacts.artifact import Metric as MetricRecord
+from aim.web.app.utils import unsupported_float_type
+from aim.web.app.commits.utils import (
     select_tf_summary_scalars,
     scale_trace_steps,
     separate_select_statement,
@@ -320,7 +320,6 @@ class TFSummaryParamsUpdateApi(Resource):
             db.session.add(tf_log)
 
         tf_log.params = params
-        tf_log.params_json = json.loads(parsed_params) if params else None
         db.session.commit()
 
         return jsonify({
@@ -385,7 +384,7 @@ class CommitTagUpdateApi(Resource):
 @commits_api.resource('/<experiment>/<commit_hash>/info')
 class CommitInfoApi(Resource):
     def get(self, experiment, commit_hash):
-        commit_path = os.path.join('/store', experiment, commit_hash)
+        commit_path = os.path.join(os.getcwd(), '.aim', experiment, commit_hash)
 
         if not os.path.isdir(commit_path):
             return make_response(jsonify({}), 404)

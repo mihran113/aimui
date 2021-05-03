@@ -1,7 +1,7 @@
 import os
 from base64 import b64encode
 
-from utils import get_module, ls_dir
+from aim.web.utils import get_module, ls_dir
 
 
 class TFSummaryAdapter:

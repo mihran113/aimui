@@ -1,9 +1,8 @@
 import uuid
 from sqlalchemy.orm import relationship
-from sqlalchemy.dialects.postgresql import JSONB
 
-from app.db import db
-from app.utils import default_created_at
+from aim.web.app.db import db
+from aim.web.app.utils import default_created_at
 
 
 CommitTagAssociation = db.Table('commit_tag',
@@ -41,7 +40,6 @@ class TFSummaryLog(db.Model):
     uuid = db.Column(db.Text, primary_key=True)
     log_path = db.Column(db.Text)
     params = db.Column(db.Text)
-    params_json = db.Column(JSONB, default=None)
     created_at = db.Column(db.DateTime, default=default_created_at)
     is_archived = db.Column(db.Boolean)
 
